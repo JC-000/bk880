@@ -1,0 +1,35 @@
+[project]
+name = "bk880"
+version = "0.1.0"
+description = "Serial driver, CLI and MCP server for the B&K Precision 880 LCR meter"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "JC-000" }]
+requires-python = ">=3.11"
+keywords = ["lcr-meter", "bk-precision", "bk880", "test-equipment", "scpi", "mcp"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: MacOS",
+    "Topic :: Scientific/Engineering :: Electronic Design Automation (EDA)",
+    "Topic :: System :: Hardware",
+]
+dependencies = ["pyserial>=3.5"]
+
+[project.urls]
+Homepage = "https://github.com/JC-000/bk880"
+Issues = "https://github.com/JC-000/bk880/issues"
+
+[project.optional-dependencies]
+mcp = ["mcp>=2.3,<3"]
+
+[project.scripts]
+bk880 = "bk880.cli:main"
+bk880-mcp = "bk880.mcp_server:main"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
